@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>一键求和网</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+        input[type="number"] {
+            display: block;
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px auto;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            text-align: center;
+            -moz-appearance: textfield;
+        }
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .total {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+    <script>
+        function addInput() {
+            const container = document.querySelector('.container');
+            const newInput = document.createElement('input');
+            newInput.type = 'number';
+            newInput.placeholder = '输入新的数值';
+            container.insertBefore(newInput, container.querySelector('button'));
+        }
+
+        function calculateTotal() {
+            const inputs = document.querySelectorAll('input[type="number"]');
+            let total = 0;
+            inputs.forEach(input => {
+                total += Number(input.value);
+            });
+            document.getElementById('totalDisplay').textContent = '合计为：' + total;
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>💡一键求和💡</h2>
+        <input type="number" placeholder="数值1">
+        <input type="number" placeholder="数值2">
+        <input type="number" placeholder="数值3">
+        <input type="number" placeholder="数值4">
+        <input type="number" placeholder="数值5">
+        <input type="number" placeholder="数值6">
+        <button onclick="addInput()">添加新的数值</button>
+        <button onclick="calculateTotal()">计算总和</button>
+        <div class="total" id="totalDisplay">合计为：0</div>
+    </div>
+</body>
+</html>
